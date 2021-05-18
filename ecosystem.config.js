@@ -19,7 +19,7 @@ module.exports = {
   deploy: {
     development: {
       user: 'deploy',
-      host: 'linode2.trunksys.com',
+      host: 'dev0.monosparta.org',
       ref: 'origin/develop',
       repo: 'git@github.com:monosparta/pm2-ecosystem-demo.git',
       path: '/home/deploy/pm2-ecosystem-demo',
@@ -29,14 +29,15 @@ module.exports = {
       'post-deploy': '. ~/.fnm/fnm.sh; npm install && pm2 reload ecosystem.config.js',
     },
     production: {
-      user: 'SSH_USERNAME',
-      host: 'SSH_HOSTMACHINE',
-      ref: 'origin/master',
-      repo: 'GIT_REPOSITORY',
-      path: 'DESTINATION_PATH',
-      'pre-deploy-local': '',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
+      user: 'deploy',
+      host: 'prod0.monosparta.org',
+      ref: 'origin/develop',
+      repo: 'git@github.com:monosparta/pm2-ecosystem-demo.git',
+      path: '/home/deploy/pm2-ecosystem-demo',
+      'pre-setup': '. ~/.fnm/fnm.sh; node --version; npm --version; pm2 --version',
+      'post-setup': 'ls -al',
+      'pre-deploy-local': "echo 'This is a local executed command'",
+      'post-deploy': '. ~/.fnm/fnm.sh; npm install && pm2 reload ecosystem.config.js --env production',
     }
   }
 };
