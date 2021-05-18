@@ -7,10 +7,6 @@ module.exports = {
       NODE_ENV: 'development',
       PORT: process.env.PORT | '3000',
     },
-    env_staging: {
-      NODE_ENV: 'production',
-      PORT: process.env.PORT | '8000',
-    },
     env_production: {
       NODE_ENV: 'production',
       PORT: process.env.PORT | '8000',
@@ -34,10 +30,10 @@ module.exports = {
       ref: 'origin/main',
       repo: 'git@github.com:monosparta/pm2-ecosystem-demo.git',
       path: '/home/deploy/pm2-ecosystem-demo',
-      'pre-setup': '. ~/.fnm/fnm.sh; node --version; npm --version; pm2 --version',
+      'pre-setup': 'node --version; npm --version; pm2 --version',
       'post-setup': 'ls -al',
       'pre-deploy-local': "echo 'This is a local executed command'",
-      'post-deploy': '. ~/.fnm/fnm.sh; npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
     }
   }
 };
