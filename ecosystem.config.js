@@ -23,7 +23,7 @@ module.exports = {
       ref: 'origin/develop',
       repo: 'git@github.com:monosparta/pm2-ecosystem-demo.git',
       path: '/home/deploy/pm2-ecosystem-demo',
-      'pre-setup': 'git --version',
+      'pre-setup': 'git --version; fnm --version',
       'post-setup': 'ls -al',
       'pre-deploy-local': "echo 'This is a local executed command'",
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js',
