@@ -23,10 +23,10 @@ module.exports = {
       ref: 'origin/develop',
       repo: 'git@github.com:monosparta/pm2-ecosystem-demo.git',
       path: '/home/deploy/pm2-ecosystem-demo',
-      'pre-setup': 'git --version; fnm --version',
+      'pre-setup': '. ~/.fnm/fnm.sh; node --version; npm --version; pm2 --version',
       'post-setup': 'ls -al',
       'pre-deploy-local': "echo 'This is a local executed command'",
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js',
+      'post-deploy': '. ~/.fnm/fnm.sh; npm install && pm2 reload ecosystem.config.js',
     },
     production: {
       user: 'SSH_USERNAME',
