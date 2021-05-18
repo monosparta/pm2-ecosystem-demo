@@ -31,7 +31,7 @@ module.exports = {
     production: {
       user: 'deploy',
       host: 'prod0.monosparta.org',
-      ref: 'origin/develop',
+      ref: 'origin/main',
       repo: 'git@github.com:monosparta/pm2-ecosystem-demo.git',
       path: '/home/deploy/pm2-ecosystem-demo',
       'pre-setup': '. ~/.fnm/fnm.sh; node --version; npm --version; pm2 --version',
